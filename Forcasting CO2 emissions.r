@@ -5,11 +5,13 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC #### Libraries
+# MAGIC #### Libraries and set environemnt
 
 # COMMAND ----------
 
 library(tidyverse)
+library(sparklyr)
+sc <- spark_connect(method = "databricks")
 
 # COMMAND ----------
 
@@ -18,4 +20,8 @@ library(tidyverse)
 
 # COMMAND ----------
 
-
+tbl_change_db(sc, "")
+spark_df <- spark_read_table(
+  sc = sc,
+  name = ""
+)
