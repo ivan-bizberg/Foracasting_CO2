@@ -20,8 +20,16 @@ sc <- spark_connect(method = "databricks")
 
 # COMMAND ----------
 
-tbl_change_db(sc, "")
+tbl_change_db(sc, "gms_us_mart")
 spark_df <- spark_read_table(
   sc = sc,
-  name = ""
+  name = "txn_mrt_ehs_tango_msr_rollups_glbl"
 )
+
+# COMMAND ----------
+
+str(spark_df)
+
+# COMMAND ----------
+
+df <- spark_df %>% collect()
